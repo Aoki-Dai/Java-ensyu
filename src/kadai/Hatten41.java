@@ -33,10 +33,10 @@ public class Hatten41 {
     private JFrame getJFrame() {
         if (jf == null) {
             jf = new JFrame();
-            jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 閉じるボタンで終了
             jf.setSize(640, 240); // ウィンドウサイズ
-            jf.setLocationRelativeTo(null);
-            jf.setContentPane(getJContentPane());
+            jf.setLocationRelativeTo(null);// ウィンドウを中央に表示
+            jf.setContentPane(getJContentPane());// コンテントペーンを設定
             jf.setTitle("発展課題4");
         }
         return jf;
@@ -47,8 +47,8 @@ public class Hatten41 {
         if (cp == null) {
             cp = new JPanel();
             cp.setLayout(new GridLayout(2, 1));
-            cp.add(getLabelPanel());
-            cp.add(getButtonPanel());
+            cp.add(getLabelPanel());// ラベルパネルを追加
+            cp.add(getButtonPanel());// ボタンパネルを追加
         }
         return cp;
     }
@@ -80,7 +80,7 @@ public class Hatten41 {
     private JLabel getJLabel() {
         if (jl == null) {
             jl = new JLabel();
-            jl.setText("2 は素数です");
+            jl.setText("2 は素数です");// 起動時テキスト
         }
         return jl;
     }
@@ -90,7 +90,7 @@ public class Hatten41 {
         if (jb == null) {
             jb = new JButton();
             jb.setText("+1ボタン");
-            jb.addActionListener(new MyActionListener(1));
+            jb.addActionListener(new MyActionListener(1));// リスナーの登録
         }
         return jb;
     }
@@ -131,14 +131,19 @@ public class Hatten41 {
     }
 
     // 素数判定メソッド
+    // ブーリアン型...True or False
     private boolean isPrime(int num) {
-        if (num <= 1) return false;
-        if (num == 2) return true;
-        if (num % 2 == 0) return false;
+        if (num <= 1)// 1以下は素数ではない
+            return false;
+        if (num == 2)// 2は素数
+            return true;
+        if (num % 2 == 0)// 2の倍数は素数ではない
+            return false;
         for (int j = 3; j <= Math.sqrt(num); j += 2) {
-            if (num % j == 0) return false;
+            if (num % j == 0)// 割り切れる数があれば素数ではない
+                return false;
         }
-        return true;
+        return true;// 素数
     }
 
     // 素因数分解メソッド
@@ -149,27 +154,31 @@ public class Hatten41 {
 
         int[] factors = new int[32]; // 素因数を保存する配列
         int index = 0;
-        int originalNum = num;
+        int originalNum = num;// 元の数を保存
 
-        for (int j = 2; j <= num / 2; j++) {
-            while (num % j == 0) {
-                factors[index++] = j;
-                num /= j;
+        // 素因数分解
+        for (int j = 2; j <= num / 2; j++) {// 2から半分までの数で割り切れるか調べる
+            while (num % j == 0) {// 素因数で割り切れる場合
+                factors[index++] = j;// 素因数を配列に保存
+                num /= j;// 素因数で割る
             }
         }
-        if (num > 1) {
-            factors[index++] = num;
+        if (num > 1) {// 最後の素因数を保存
+            factors[index++] = num;// 素因数を配列に保存
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(originalNum).append(" = ");
-        for (int k = 0; k < index; k++) {
-            sb.append(factors[k]);
+        // 結果を文字列にして返す
+        StringBuilder sb = new StringBuilder();// 文字列を結合するためのクラス
+        sb.append(originalNum).append(" = ");// 元の数を追加
+        // 素因数を結合
+        for (int k = 0; k < index; k++) {// 素因数の数だけ繰り返す
+            sb.append(factors[k]);// 素因数を追加
+            // 最後の素因数でない場合は×を追加
             if (k < index - 1) {
                 sb.append("×");
             }
         }
-        return sb.toString();
+        return sb.toString();// 文字列を返す
     }
 
     // 汎用アクションリスナー
@@ -177,16 +186,19 @@ public class Hatten41 {
         private int increment;
         private boolean reset;
 
+        // インクリメント用コンストラクタ
         MyActionListener(int increment) {
             this.increment = increment;
             this.reset = false;
         }
 
+        // リセット用コンストラクタ
         MyActionListener(int increment, boolean reset) {
             this.increment = increment;
             this.reset = reset;
         }
 
+        // アクションリスナー
         public void actionPerformed(ActionEvent e) {
             if (reset) {
                 i = increment; // リセット
@@ -201,7 +213,7 @@ public class Hatten41 {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Hatten41 application = new Hatten41();
-            application.getJFrame().setVisible(true);
+            application.getJFrame().setVisible(true);// ウインドウを可視化
         });
     }
 }
