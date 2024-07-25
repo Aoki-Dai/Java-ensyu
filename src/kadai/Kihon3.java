@@ -29,12 +29,12 @@ public class Kihon3 {
 
 		JPanel cp = (JPanel) jf.getContentPane();
 		// コンテントペーンcp取得後，以下を実行
-		// cpのレイアウトをFlowLayoutにする
-		cp.setLayout(new FlowLayout());
+		cp.setLayout(new FlowLayout());// cpのレイアウトをFlowLayoutにする
 
 		FileReader fr = new FileReader("todoufuken.txt");
 		BufferedReader br = new BufferedReader(fr);
 		String s;
+		// ファイルから1行ずつ読み，ボタンを生成
 		while ((s = br.readLine()) != null) {
 			JButton jb = new JButton(s);
 			cp.add(jb);
