@@ -50,13 +50,13 @@ public class Kihon6 {
 		if (cp == null) {
 			cp = new JPanel();
 			cp.setLayout(new GridLayout(2, 1));
-			cp.add(getJPanel());
-			cp.add(getJLabelDisplay());
+			cp.add(getJPanel());// 上段 パネル
+			cp.add(getJLabelDisplay());// 下段 ラベル
 		}
 		return cp;
 	}
 
-	// 上段
+	// 上段 パネル
 	private JPanel getJPanel() {
 		if (jpGet == null) {
 			jpGet = new JPanel();
@@ -78,6 +78,7 @@ public class Kihon6 {
 		return jpButton;
 	}
 
+	// ラベル1
 	private JPanel getJPanelLabel1() {
 		if (jpLabel1 == null) {
 			jpLabel1 = new JPanel();
@@ -87,6 +88,7 @@ public class Kihon6 {
 		return jpLabel1;
 	}
 
+	// ラベル2
 	private JPanel getJPanelLabel2() {
 		if (jpLabel2 == null) {
 			jpLabel2 = new JPanel();
@@ -96,6 +98,7 @@ public class Kihon6 {
 		return jpLabel2;
 	}
 
+	// 下段 ラベル
 	private JLabel getJLabelDisplay() {
 		if (jlDisplay == null) {
 			jlDisplay = new JLabel();
@@ -105,30 +108,33 @@ public class Kihon6 {
 		return jlDisplay;
 	}
 
+	// ラベル1に表示する処理
 	private JLabel getJLabel1() {
 		if (jl1 == null) {
 			jl1 = new JLabel("ラベル1");
-			jl1.setHorizontalAlignment(SwingUtilities.CENTER);
+			jl1.setHorizontalAlignment(SwingUtilities.CENTER);// ラベルの中央揃え
+			// マウスイベント
 			jl1.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mousePressed(MouseEvent e) {
-					jlDisplay.setText("MOUSE_PRESSED");
+					jlDisplay.setText("MOUSE_PRESSED");// マウスが押された時
 				}
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
-					jlDisplay.setText("MOUSE_RELEASED");
+					jlDisplay.setText("MOUSE_RELEASED");// マウスが離された時
 				}
 			});
 		}
 		return jl1;
 	}
 
+	// ラベル2に表示する処理
 	private JLabel getJLabel2() {
 		if (jl2 == null) {
 			jl2 = new JLabel("ラベル2");
 			jl2.setHorizontalAlignment(SwingUtilities.CENTER);
-
+			// マウスイベント
 			jl2.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mousePressed(MouseEvent e) {
@@ -142,27 +148,30 @@ public class Kihon6 {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					// クリック回数によって表示を変える
 					if (e.getClickCount() == 2) {
-						jlDisplay.setText("MOUSE_DOUBLE_CLICKED");
+						jlDisplay.setText("MOUSE_DOUBLE_CLICKED");// ダブルクリック
 					} else {
-						jlDisplay.setText("MOUSE_CLICKED");
+						jlDisplay.setText("MOUSE_CLICKED");// クリック
 					}
 				}
 			});
 
+			// マウス移動イベント
 			jl2.addMouseMotionListener(new MouseMotionAdapter() {
-				@Override
+				@Override // マウスが移動した時
 				public void mouseMoved(MouseEvent e) {
-					int x = e.getX();
-					int y = e.getY();
-					jlDisplay.setText("MOUSE_MOVED: " + x + "," + y);
+					int x = e.getX();// マウスのX座標
+					int y = e.getY();// マウスのY座標
+					jlDisplay.setText("MOUSE_MOVED: " + x + "," + y);// マウスの座標を表示
 				}
 
-				@Override
+				@Override // マウスがドラッグされた時
 				public void mouseDragged(MouseEvent e) {
+					// ドラッグ開始座標と終了座標を表示
 					if (dragStartPoint != null) {
 						jlDisplay.setText("MOUSE_DRAGGED: (" + dragStartPoint.x + "," + dragStartPoint.y + ")-("
-								+ e.getX() + "," + e.getY() + ")");
+								+ e.getX() + "," + e.getY() + ")");// ドラッグ開始座標と終了座標を表示
 					}
 				}
 			});
@@ -171,17 +180,19 @@ public class Kihon6 {
 		return jl2;
 	}
 
+	// ボタン
 	private JButton getJButton() {
 		if (jb == null) {
 			jb = new JButton("ボタン");
+			// マウスイベント
 			jb.addMouseListener(new MouseAdapter() {
 				@Override
-				public void mouseEntered(MouseEvent e) {
+				public void mouseEntered(MouseEvent e) {// マウスがボタンに入った時
 					jlDisplay.setText("MOUSE_ENTERED");
 				}
 
 				@Override
-				public void mouseExited(MouseEvent e) {
+				public void mouseExited(MouseEvent e) {// マウスがボタンから出た時
 					jlDisplay.setText("MOUSE_EXITED");
 				}
 			});
@@ -189,11 +200,12 @@ public class Kihon6 {
 		return jb;
 	}
 
+	// メインメソッド
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {// メインスレッド
 			public void run() {
-				Kihon6 application = new Kihon6();
-				application.getJFrame().setVisible(true);
+				Kihon6 application = new Kihon6();// インスタンス生成
+				application.getJFrame().setVisible(true);// フレームを表示
 			}
 		});
 	}
