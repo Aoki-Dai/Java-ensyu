@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+// フレームを表示し，ボタンを押すとラベルの数字が増える
 public class Kihon4 {
 
 	private JFrame jf = null;
@@ -31,16 +32,17 @@ public class Kihon4 {
 
 	private JFrame getJFrame() {
 		if (jf == null) {
-			jf = new JFrame();
-			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			jf.setSize(640, 240); //windowサイズ
-			jf.setLocationRelativeTo(null);
-			jf.setContentPane(getJContentPane());
+			jf = new JFrame();// JFrameクラスのオブジェクト（ウィンドウ）を生成
+			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// ×ボタンでウインドウを閉じ，終了するようにする
+			jf.setSize(640, 240); // windowサイズ
+			jf.setLocationRelativeTo(null);// ウインドウを画面の中央に表示
+			jf.setContentPane(getJContentPane());// コンテントペーンを設定
 			jf.setTitle("基本課題4");
 		}
 		return jf;
 	}
 
+	// コンテントペーンを取得
 	private JPanel getJContentPane() {
 		if (cp == null) {
 			cp = new JPanel();
@@ -51,27 +53,30 @@ public class Kihon4 {
 		return cp;
 	}
 
+	// ラベルを取得
 	private JPanel getPanel() {
 		if (jpLabel == null) {
 			jpLabel = new JPanel();
 			jpLabel.setLayout(new GridLayout(1, 1));
-			jpLabel.add(getJLabel()); //ラベルを貼り付け
+			jpLabel.add(getJLabel()); // ラベルを貼り付け
 		}
 		return jpLabel;
 	}
 
+	// ボタンを取得
 	private JPanel getPnel2() {
 		if (jpButton == null) {
 			jpButton = new JPanel();
 			jpButton.setLayout(new GridLayout(1, 4));
-			jpButton.add(getJButton()); //ボタンを貼り付け
-			jpButton.add(getJButton10()); //ボタンを貼り付け
-			jpButton.add(getJButton100()); //ボタンを貼り付け
-			jpButton.add(getJButtonReset()); //ボタンを貼り付け
+			jpButton.add(getJButton()); // +1ボタンを貼り付け
+			jpButton.add(getJButton10()); // +10ボタンを貼り付け
+			jpButton.add(getJButton100()); // +100ボタンを貼り付け
+			jpButton.add(getJButtonReset()); // リセットボタンを貼り付け
 		}
 		return jpButton;
 	}
 
+	// ラベルを取得
 	private JLabel getJLabel() {
 		if (jl == null) {
 			jl = new JLabel();
@@ -80,15 +85,17 @@ public class Kihon4 {
 		return jl;
 	}
 
+	// +1ボタンを取得
 	private JButton getJButton() {
 		if (jb == null) {
 			jb = new JButton();
 			jb.setText("+1ボタン");
-			jb.addActionListener(new MyActionListener()); //リスナーの登録
+			jb.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jb;
 	}
 
+	// +10ボタンを取得
 	private JButton getJButton10() {
 		if (jb10 == null) {
 			jb10 = new JButton();
@@ -98,6 +105,7 @@ public class Kihon4 {
 		return jb10;
 	}
 
+	// +100ボタンを取得
 	private JButton getJButton100() {
 		if (jb100 == null) {
 			jb100 = new JButton();
@@ -107,6 +115,7 @@ public class Kihon4 {
 		return jb100;
 	}
 
+	// リセットボタンを取得
 	private JButton getJButtonReset() {
 		if (jbReset == null) {
 			jbReset = new JButton();
@@ -116,40 +125,45 @@ public class Kihon4 {
 		return jbReset;
 	}
 
-	class MyActionListener implements ActionListener { //リスナーの実装
+	// リスナーの実装 +1の処理
+	class MyActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			i++; //iの値を1増やして
-			jl.setText(Integer.toString(i)); //ラベルに設定
+			i++; // iの値を1増やして
+			jl.setText(Integer.toString(i)); // ラベルに設定
 		}
 	}
 
-	class MyActionListener10 implements ActionListener { //リスナーの実装
+	// リスナーの実装 +10の処理
+	class MyActionListener10 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			i += 10; //iの値を10増やして
-			jl.setText(Integer.toString(i)); //ラベルに設定
+			i += 10; // iの値を10増やして
+			jl.setText(Integer.toString(i)); // ラベルに設定
 		}
 	}
 
-	class MyActionListener100 implements ActionListener { //リスナーの実装
+	// リスナーの実装 +100の処理
+	class MyActionListener100 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			i += 100; //iの値を100増やして
-			jl.setText(Integer.toString(i)); //ラベルに設定
+			i += 100; // iの値を100増やして
+			jl.setText(Integer.toString(i)); // ラベルに設定
 		}
 	}
 
-	class MyActionListenerReset implements ActionListener { //リスナーの実装
+	// リスナーの実装 リセットの処理
+	class MyActionListenerReset implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			i = 1; //リセット
-			jl.setText(Integer.toString(i)); //ラベルに設定
+			i = 1; // リセット
+			jl.setText(Integer.toString(i)); // ラベルに設定
 		}
 	}
 
+	// メインメソッド
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Kihon4 application = new Kihon4();
-				application.getJFrame().setVisible(true);
+				Kihon4 application = new Kihon4();// インスタンス生成
+				application.getJFrame().setVisible(true);// ウインドウを可視化
 			}
 		});
 	}
