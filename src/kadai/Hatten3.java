@@ -26,7 +26,7 @@ public class Hatten3 {
 		JPanel cp = (JPanel) jf.getContentPane();
 
 		// コンテントペーンcp取得後，以下を実行
-		// cpのレイアウトをGridLayout（1行4列）にする
+		// cpのレイアウトをGridLayout（1行3列）にする
 		cp.setLayout(new GridLayout(1, 3));
 
 		JPanel jp1 = new JPanel(); // パネル1を生成
