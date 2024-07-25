@@ -41,30 +41,36 @@ public class Hatten5 {
 	private JPanel getJContentPane() {
 		if (cp == null) {
 			cp = new JPanel();
-			cp.setLayout(new BorderLayout());
-			cp.add(getJImageLabel(), BorderLayout.CENTER);
+			cp.setLayout(new BorderLayout());// レイアウトマネージャーをBorderLayoutに設定
+			cp.add(getJImageLabel(), BorderLayout.CENTER);// 画像を中央に配置
 		}
 		return cp;
 	}
 
+	// 画像
 	private JLabel getJImageLabel() {
 		if (jlImage == null) {
 			jlImage = new JLabel();
 			playIcon = new ImageIcon("play.png");
 			pauseIcon = new ImageIcon("stop.png");
-			jlImage.setIcon(playIcon);
+			jlImage.setIcon(playIcon);// 初期状態は再生ボタン
 			jlImage.setHorizontalAlignment(JLabel.CENTER); // 水平方向に中央に配置
 			jlImage.setVerticalAlignment(JLabel.CENTER); // 垂直方向に中央に配置
+
+			// マウスクリックイベント
 			jlImage.addMouseListener(new MouseAdapter() {
+				// マウスクリック時の処理
 				public void mouseClicked(MouseEvent e) {
-					toggleIcon();
+					toggleIcon();// アイコンの切り替え
 				}
 			});
 		}
 		return jlImage;
 	}
 
+	// アイコンの切り替え
 	private void toggleIcon() {
+		// 再生中なら停止アイコンに、停止中なら再生アイコンに切り替え
 		isPlaying = !isPlaying;
 		if (isPlaying) {
 			jlImage.setIcon(pauseIcon);
