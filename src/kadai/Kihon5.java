@@ -38,19 +38,20 @@ public class Kihon5 {
 	private JCheckBox jc3 = null;
 	private JButton jbget = null;
 
+	// JFrameを取得するメソッド
 	private JFrame getJFrame() {
 		if (jf == null) {
 			jf = new JFrame();
 			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			jf.setSize(480, 300); //windowサイズ
+			jf.setSize(480, 300); // windowサイズ
 			jf.setLocationRelativeTo(null);
-			jf.setContentPane(getJContentPane());
+			jf.setContentPane(getJContentPane());// コンテントペーンを設定
 			jf.setTitle("基本課題5");
 		}
 		return jf;
 	}
 
-	//パネル
+	// パネル
 	private JPanel getJContentPane() {
 		if (cp == null) {
 			cp = new JPanel();
@@ -62,15 +63,17 @@ public class Kihon5 {
 		return cp;
 	}
 
+	// 上段 ラベルパネル
 	private JPanel getJPanel() {
 		if (jpLabel == null) {
 			jpLabel = new JPanel();
 			jpLabel.setLayout(new GridLayout(1, 1));
-			jpLabel.add(getJLabel()); //ラベルを貼り付け
+			jpLabel.add(getJLabel()); // ラベルを貼り付け
 		}
 		return jpLabel;
 	}
 
+	// 中段 ボタンパネル
 	private JPanel getJPnel2() {
 		if (jpButton == null) {
 			jpButton = new JPanel();
@@ -81,6 +84,7 @@ public class Kihon5 {
 		return jpButton;
 	}
 
+	// 中段左 ラジオボタンパネル
 	private JPanel getJPnel2_1() {
 		if (jpRadioButton == null) {
 			jpRadioButton = new JPanel();
@@ -88,14 +92,15 @@ public class Kihon5 {
 			jpRadioButton.add(getJRadioButton());
 			jpRadioButton.add(getJRadioButton2());
 			jpRadioButton.add(getJRadioButton3());
-			bg = new ButtonGroup();
-			bg.add(jr1);
+			bg = new ButtonGroup();// ボタングループを作成
+			bg.add(jr1);// ボタングループに追加
 			bg.add(jr2);
 			bg.add(jr3);
 		}
 		return jpRadioButton;
 	}
 
+	// 中段右 チェックボックスパネル
 	private JPanel getJPnel2_2() {
 		if (jpCheckBox == null) {
 			jpCheckBox = new JPanel();
@@ -107,16 +112,18 @@ public class Kihon5 {
 		return jpCheckBox;
 	}
 
+	// 下段 ボタンパネル
 	private JPanel getJPnel3() {
 		if (jpGet == null) {
 			jpGet = new JPanel();
 			jpGet.setLayout(new GridLayout(1, 1));
-			jpGet.add(getJButton()); //ボタンを貼り付け
+			jpGet.add(getJButton()); // ボタンを貼り付け
 		}
 		return jpGet;
 	}
 
-	//ここから部品
+	// ここから部品
+	// ラベル
 	private JLabel getJLabel() {
 		if (jl == null) {
 			jl = new JLabel();
@@ -125,10 +132,11 @@ public class Kihon5 {
 		return jl;
 	}
 
+	// ラジオボタン
 	private JRadioButton getJRadioButton() {
 		if (jr1 == null) {
 			jr1 = new JRadioButton("ラジオボタン1");
-			jr1.addActionListener(new MyActionListener()); //リスナーの登録
+			jr1.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jr1;
 	}
@@ -136,7 +144,7 @@ public class Kihon5 {
 	private JRadioButton getJRadioButton2() {
 		if (jr2 == null) {
 			jr2 = new JRadioButton("ラジオボタン2");
-			jr2.addActionListener(new MyActionListener()); //リスナーの登録
+			jr2.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jr2;
 	}
@@ -144,15 +152,16 @@ public class Kihon5 {
 	private JRadioButton getJRadioButton3() {
 		if (jr3 == null) {
 			jr3 = new JRadioButton("ラジオボタン3");
-			jr3.addActionListener(new MyActionListener()); //リスナーの登録
+			jr3.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jr3;
 	}
 
+	// チェックボックス
 	private JCheckBox getJCheckBox() {
 		if (jc1 == null) {
 			jc1 = new JCheckBox("チェックボックス1");
-			jc1.addActionListener(new MyActionListener()); //リスナーの登録
+			jc1.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jc1;
 	}
@@ -160,7 +169,7 @@ public class Kihon5 {
 	private JCheckBox getJCheckBox2() {
 		if (jc2 == null) {
 			jc2 = new JCheckBox("チェックボックス2");
-			jc2.addActionListener(new MyActionListener()); //リスナーの登録
+			jc2.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jc2;
 	}
@@ -168,11 +177,12 @@ public class Kihon5 {
 	private JCheckBox getJCheckBox3() {
 		if (jc3 == null) {
 			jc3 = new JCheckBox("チェックボックス3");
-			jc3.addActionListener(new MyActionListener()); //リスナーの登録
+			jc3.addActionListener(new MyActionListener()); // リスナーの登録
 		}
 		return jc3;
 	}
 
+	// 状態取得ボタン
 	private JButton getJButton() {
 		if (jbget == null) {
 			jbget = new JButton("状態取得");
@@ -181,10 +191,14 @@ public class Kihon5 {
 		return jbget;
 	}
 
+	// リスナー
 	class MyActionListener implements ActionListener {
+		// ボタンが押された時の処理
 		public void actionPerformed(ActionEvent e) {
-			StringBuilder sb = new StringBuilder();
-			if (jr1.isSelected()) {
+			StringBuilder sb = new StringBuilder();// 文字列を結合するためのクラス
+
+			// ラジオボタンの状態を取得
+			if (jr1.isSelected()) {// ラジオボタン1が選択されている場合
 				sb.append("ラジオボタン1");
 			} else if (jr2.isSelected()) {
 				sb.append("ラジオボタン2");
@@ -192,8 +206,9 @@ public class Kihon5 {
 				sb.append("ラジオボタン3");
 			}
 
+			// チェックボックスの状態を取得
 			if (jc1.isSelected()) {
-				if (sb.length() > 0)
+				if (sb.length() > 0)// 文字列が空でない場合
 					sb.append(", ");
 				sb.append("チェックボックス1");
 			}
@@ -208,7 +223,7 @@ public class Kihon5 {
 				sb.append("チェックボックス3");
 			}
 
-			jl.setText(sb.toString());
+			jl.setText(sb.toString());// ラベルに設定
 		}
 	}
 
