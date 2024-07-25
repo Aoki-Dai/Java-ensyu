@@ -1,0 +1,11 @@
+”Department”の文字数は10です。
+”of”の文字数は2です。
+”Information”の文字数は11です。
+”and”の文字数は3です。
+”Communication”の文字数は13です。
+”Engineering”の文字数は11です。
+”Tohoku”の文字数は6です。
+”Institute”の文字数は9です。
+”of”の文字数は2です。
+”Technology”の文字数は10です。
+全部で10行です。
